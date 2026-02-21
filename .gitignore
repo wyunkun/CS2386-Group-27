@@ -5,3 +5,21 @@
 [Bb]uilds/
 [Ll]ogs/
 UserSettings/
+
+# Visual Studio / Rider
+.vs/
+.vscode/
+
+# Auto-generated C# project files
+*.csproj
+*.sln
+*.slnx
+
+# Unity cache
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
