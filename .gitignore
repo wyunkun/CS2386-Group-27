@@ -23,3 +23,9 @@ Build/
 Builds/
 Logs/
 UserSettings/
+
+.vscode/
+.vsconfig
+*.sln
+*.slnx
+*.csproj
