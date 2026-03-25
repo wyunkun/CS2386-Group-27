@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 06627c435350bf14ea2da81a92c7108f
+timeCreated: 1535493789
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 25800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Scenes/demo_tunnel/LightingData.asset
+  uploadId: 264099

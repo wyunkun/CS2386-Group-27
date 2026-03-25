@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f6cc7ea4692d3554d9a1c965da64430e
+timeCreated: 1535309222
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/scaleBlock_noEmpty_mat.mat
+  uploadId: 264099

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4d56298bc133573488a72517ce77b8e7
+timeCreated: 1535322252
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Scenes/demo_tunnel.unity
+  uploadId: 264099

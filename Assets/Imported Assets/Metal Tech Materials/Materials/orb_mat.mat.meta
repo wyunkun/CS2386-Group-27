@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fa860c662d2d58849a395f03b3bf448a
+timeCreated: 1535323222
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/orb_mat.mat
+  uploadId: 264099

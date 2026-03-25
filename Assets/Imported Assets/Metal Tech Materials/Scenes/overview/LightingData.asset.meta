@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b140c28318f15414080bc4102e79621d
+timeCreated: 1535309577
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 25800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Scenes/overview/LightingData.asset
+  uploadId: 264099

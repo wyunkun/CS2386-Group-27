@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5a27f5cec52f3d0498b877e06be71b65
+timeCreated: 1535309222
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/octoBlock_noEmpty_mat.mat
+  uploadId: 264099

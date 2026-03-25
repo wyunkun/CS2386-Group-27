@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8299a0d25d39f6c4bbab18842dd1e8c0
+timeCreated: 1535308985
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/groundPlane_mat.mat
+  uploadId: 264099

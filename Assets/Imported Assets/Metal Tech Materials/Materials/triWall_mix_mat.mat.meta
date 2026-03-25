@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3c45e6abcbfdc3c44ba641e554f802c4
+timeCreated: 1535309222
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/triWall_mix_mat.mat
+  uploadId: 264099

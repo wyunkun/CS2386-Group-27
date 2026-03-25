@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2f92b3e43a2e4054594ed78bdd2d98ca
+timeCreated: 1535309222
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/hexWall_mix_mat.mat
+  uploadId: 264099

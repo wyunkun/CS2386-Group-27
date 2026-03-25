@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dfcb7b565994e8b41b80a0be4e8d40a0
+timeCreated: 1535309222
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 127362
+  packageName: Metal Tech Surfaces
+  packageVersion: 1.0
+  assetPath: Assets/Metal Tech Materials/Materials/triWall_noLight_mat.mat
+  uploadId: 264099
