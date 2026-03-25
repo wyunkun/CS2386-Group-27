@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4ed4e021b77658142b8795bcdaf4a916
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Weapon/Weapons/SMG_v1/Source/Skin_7/SMG_Barrel_v3_s7.mat
+  uploadId: 748553
