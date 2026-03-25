@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec294852bd1f4014788e68c822cd0925
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Skyboxes/Skybox.mat
+  uploadId: 748553

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 76ddf7011dc206a4cb0c04032faee056
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Showcase_sceneSettings.lighting
+  uploadId: 748553

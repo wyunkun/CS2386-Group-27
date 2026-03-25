@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 94564a8f157aabc429bb101d7738d7d5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Weapon/Add-ons/MSight_v1/MSight_v1BF.prefab
+  uploadId: 748553

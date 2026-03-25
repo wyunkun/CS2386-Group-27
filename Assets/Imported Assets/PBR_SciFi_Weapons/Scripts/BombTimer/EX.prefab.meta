@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 759ed1336da4b7b4f930d4916836b6d9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Scripts/BombTimer/EX.prefab
+  uploadId: 748553

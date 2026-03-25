@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 0b59115913d28e8419464e615c7f4bab
+labels:
+- Floor
+- Material
+- Panel
+- Roof
+- Sci-fi
+- Scifi
+- Wall
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 128234
+  packageName: Ultimate Sci-Fi Panel Materials
+  packageVersion: 1.0
+  assetPath: Assets/Ultimate Sci-Fi Panel Materials/Materials/scifi_panel_10.mat
+  uploadId: 618810

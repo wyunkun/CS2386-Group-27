@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9f98e2a53b7844940b564561c45be216
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Examples/ASG_v1_3.prefab
+  uploadId: 748553
