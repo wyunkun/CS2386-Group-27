@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e62c3c23e8dbc614690a87acf21d7a20
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Weapon/Weapons/LMG_v1/Source/Skin_5/LMG_v1_mag_S_s5.mat
+  uploadId: 748553

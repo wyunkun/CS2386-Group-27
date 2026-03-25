@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 6e42182ac25005c49a899b21d79b232a
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: PP_v1_body
+    100004: PP_v1_BP1
+    100006: PP_v1_BP2
+    100008: PP_v1_bullet
+    100010: PP_v1_magazine
+    100012: PP_v1_mode
+    100014: PP_v1_shutter
+    100016: PP_v1_trigger
+    100018: PP_v1_BShutter_L
+    100020: PP_v1_BShutter_R
+    400000: //RootNode
+    400002: PP_v1_body
+    400004: PP_v1_BP1
+    400006: PP_v1_BP2
+    400008: PP_v1_bullet
+    400010: PP_v1_magazine
+    400012: PP_v1_mode
+    400014: PP_v1_shutter
+    400016: PP_v1_trigger
+    400018: PP_v1_BShutter_L
+    400020: PP_v1_BShutter_R
+    2100000: default
+    2300000: PP_v1_body
+    2300002: PP_v1_BP1
+    2300004: PP_v1_BP2
+    2300006: PP_v1_bullet
+    2300008: PP_v1_magazine
+    2300010: PP_v1_mode
+    2300012: PP_v1_shutter
+    2300014: PP_v1_trigger
+    2300016: PP_v1_BShutter_L
+    2300018: PP_v1_BShutter_R
+    3300000: PP_v1_body
+    3300002: PP_v1_BP1
+    3300004: PP_v1_BP2
+    3300006: PP_v1_bullet
+    3300008: PP_v1_magazine
+    3300010: PP_v1_mode
+    3300012: PP_v1_shutter
+    3300014: PP_v1_trigger
+    3300016: PP_v1_BShutter_L
+    3300018: PP_v1_BShutter_R
+    4300000: PP_v1_body
+    4300002: PP_v1_BP1
+    4300004: PP_v1_BP2
+    4300006: PP_v1_magazine
+    4300008: PP_v1_bullet
+    4300010: PP_v1_trigger
+    4300012: PP_v1_shutter
+    4300014: PP_v1_mode
+    4300016: PP_v1_BShutter_L
+    4300018: PP_v1_BShutter_R
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 317099
+  packageName: PBR SciFi Weapons v4
+  packageVersion: 4.0
+  assetPath: Assets/PBR_SciFi_Weapons/Models/Weapon/Weapons/PP_v1/Source/PP_v1.FBX
+  uploadId: 748553
