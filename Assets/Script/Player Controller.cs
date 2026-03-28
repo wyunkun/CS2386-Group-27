@@ -17,14 +17,14 @@ public class PlayerController : MonoBehaviour
     public float maxPitch = 85f;
 
     [Header("Ground Check")]
-    public float groundRayLength = 1.1f;
-    public float groundNormalMinY = 0.5f;
+    public float groundRayLength = 0.02f;
+    public float groundNormalMinY = 0.05f;
 
     // runtime
     private Vector2 moveInput;     // x=Horizontal, y=Vertical
     private bool runHeld;
-    private bool jumpStatus;
-    private bool isGrounded;
+    public bool jumpStatus;
+    public bool isGrounded;
     private float pitch;
 
     void Start()
