@@ -18,6 +18,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private Transform player;
     private AudioSource audioSource;
+    private Animator animator;
     private float attackTimer = 0f;
     private int hitCount = 0;
 
@@ -32,6 +33,8 @@ public class EnemyBehavior : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -42,8 +45,12 @@ public class EnemyBehavior : MonoBehaviour
             attackTimer -= Time.deltaTime;
 
         float distance = Vector3.Distance(transform.position, player.position);
+        bool inRange = distance <= detectionDistance && distance > minDistance && PlayerHealth.isAlive;
 
-        if (distance <= detectionDistance && distance > minDistance && PlayerHealth.isAlive)
+        if (animator != null)
+            animator.SetBool("isWalking", inRange);
+
+        if (inRange)
         {
             Vector3 direction = player.position - transform.position;
             direction.y = 0f;
@@ -74,6 +81,12 @@ public class EnemyBehavior : MonoBehaviour
             hitCount++;
             attackTimer = attackCooldown;
 
+            if (animator != null)
+            {
+                animator.SetBool("isAttacking", true);
+                Invoke("StopAttackAnim", 1f);
+            }
+
             if (hitSound != null)
                 audioSource.PlayOneShot(hitSound, soundVolume);
 
@@ -82,7 +95,13 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
-            Debug.LogError("MCA3PlayerHealth component not found on Player!");
+            Debug.LogError("PlayerHealth component not found on Player!");
         }
+    }
+
+    void StopAttackAnim()
+    {
+        if (animator != null)
+            animator.SetBool("isAttacking", false);
     }
 }

@@ -20845,13 +20845,17 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 7151435588462528423, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6a3c707cecab1a349b358e52ef7e30c4, type: 2}
     - target: {fileID: 7151435588471859225, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.463255
       objectReference: {fileID: 0}
     - target: {fileID: 7151435588471859225, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.558
+      value: 18.506
       objectReference: {fileID: 0}
     - target: {fileID: 7151435588471859225, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
       propertyPath: m_LocalPosition.z
