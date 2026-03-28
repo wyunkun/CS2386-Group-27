@@ -12,9 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public float invincibleDuration = 1.5f;
 
     [Header("Speed Boost on Hit")]
-    public float speedMultiplierPerHit = 1.5f;
-    public float maxSpeedMultiplier = 5f;
-    private float currentSpeedMultiplier = 1f;
+    public float speedMultiplier = 1.5f;
+    public float speedBoostDuration = 3f;
 
     [Header("UI")]
     public TMP_Text healthText;
@@ -30,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerController movement;
     private float originalWalkSpeed;
     private float originalRunSpeed;
+    private Coroutine speedBoostCoroutine;
 
     void Start()
     {
@@ -87,14 +87,26 @@ public class PlayerHealth : MonoBehaviour
 
     void ApplySpeedBoost()
     {
-        currentSpeedMultiplier *= speedMultiplierPerHit;
-        if (currentSpeedMultiplier > maxSpeedMultiplier)
-            currentSpeedMultiplier = maxSpeedMultiplier;
+        if (speedBoostCoroutine != null)
+            StopCoroutine(speedBoostCoroutine);
+
+        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine());
+    }
+
+    IEnumerator SpeedBoostCoroutine()
+    {
+        if (movement != null)
+        {
+            movement.walkSpeed = originalWalkSpeed * speedMultiplier;
+            movement.runSpeed = originalRunSpeed * speedMultiplier;
+        }
+
+        yield return new WaitForSeconds(speedBoostDuration);
 
         if (movement != null)
         {
-            movement.walkSpeed = originalWalkSpeed * currentSpeedMultiplier;
-            movement.runSpeed = originalRunSpeed * currentSpeedMultiplier;
+            movement.walkSpeed = originalWalkSpeed;
+            movement.runSpeed = originalRunSpeed;
         }
     }
 
@@ -107,7 +119,6 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isAlive = false;
-
         LevelManager levelManager = FindFirstObjectByType<LevelManager>();
         if (levelManager != null)
             levelManager.LevelLost();

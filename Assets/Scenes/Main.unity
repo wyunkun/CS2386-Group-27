@@ -7492,7 +7492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7692,8 +7692,8 @@ MonoBehaviour:
   startingHealth: 100
   maxHealth: 100
   invincibleDuration: 1.5
-  speedMultiplierPerHit: 1.5
-  maxSpeedMultiplier: 5
+  speedMultiplier: 1.5
+  speedBoostDuration: 3
   healthText: {fileID: 726950145}
   hitSFX: {fileID: 0}
 --- !u!1001 &587993884
@@ -22540,7 +22540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24284,7 +24284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7413714370162270546, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
       propertyPath: m_LocalPosition.x
