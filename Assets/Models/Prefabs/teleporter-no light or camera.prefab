@@ -50,12 +50,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}
       propertyPath: m_Name
-      value: teleporter
+      value: teleporter-no light or camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}
     - {fileID: 65702495048144492, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5223931177138098500}
   m_SourcePrefab: {fileID: 100100000, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}
+--- !u!1 &8167715104809096589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}
+  m_PrefabInstance: {fileID: 9050234470240626908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5223931177138098500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167715104809096589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75677357020492849a6db90871daf21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Teleporter
+  enemyPrefabs:
+  - {fileID: 7151435588471895099, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
+  enemySpawnCount: 3
+  spawnPoints: []
+  winPanel: {fileID: 0}

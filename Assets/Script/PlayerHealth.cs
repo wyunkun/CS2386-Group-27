@@ -107,12 +107,9 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isAlive = false;
-        StartCoroutine(RestartScene());
-    }
 
-    IEnumerator RestartScene()
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+        if (levelManager != null)
+            levelManager.LevelLost();
     }
 }
