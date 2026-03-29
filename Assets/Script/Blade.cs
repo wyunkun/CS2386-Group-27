@@ -12,7 +12,6 @@ public class Blade : MonoBehaviour
     [Header("Audio")]
     public AudioClip spinSFX;
     public AudioClip hitSFX;
-    public float volume = 1f;
 
     private float damageTimer = 0f;
     private AudioSource audioSource;
@@ -20,14 +19,11 @@ public class Blade : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-            audioSource = gameObject.AddComponent<AudioSource>();
 
-        if (spinSFX != null)
+        if (audioSource != null && spinSFX != null)
         {
             audioSource.clip = spinSFX;
             audioSource.loop = true;
-            audioSource.volume = volume;
             audioSource.Play();
         }
     }
@@ -42,7 +38,7 @@ public class Blade : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("enemy"))
         {
             Destroy(other.gameObject);
         }
@@ -58,8 +54,8 @@ public class Blade : MonoBehaviour
                 playerHealth.TakeDamage(damageToPlayer);
                 damageTimer = damageCooldown;
 
-                if (hitSFX != null)
-                    audioSource.PlayOneShot(hitSFX, volume);
+                if (hitSFX != null && audioSource != null)
+                    audioSource.PlayOneShot(hitSFX);
             }
         }
     }
