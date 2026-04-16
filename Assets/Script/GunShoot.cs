@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -16,7 +17,18 @@ public class GunShoot : MonoBehaviour
     public AudioSource audioSource;
     public Animator animator;
 
+    [Header("Ammo")]
+    public int totalAmmoAmonut = 100;
+    public int magazineAmmoAmout = 30;
+    public TMP_Text ammo;
+
+    public bool canReload;
     private float nextFireTime;
+    private int currentAmmoAmount;
+    void Start()
+    {
+        currentAmmoAmount = magazineAmmoAmout;
+    }
 
     void Update()
     {
@@ -24,10 +36,16 @@ public class GunShoot : MonoBehaviour
         {
             if (!CanShoot())
                 return;
+            if(currentAmmoAmount > 0)
+            {
+                nextFireTime = Time.time + fireRate;
+                Shoot();
+                currentAmmoAmount -= 1;
+            }
             
-            nextFireTime = Time.time + fireRate;
-            Shoot();
         }
+        Reload();
+        UpdataAmmoText();
     }
 
     void Shoot()
@@ -68,5 +86,35 @@ public class GunShoot : MonoBehaviour
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         return stateInfo.IsName("Default");
+    }
+
+    void Reload()
+    {
+        if (totalAmmoAmonut <= 0)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(currentAmmoAmount < 30)
+            {
+                canReload = true;
+                Invoke(nameof(FinishReload), 2f);
+            }
+        }
+    }
+
+    void FinishReload()
+    {
+        int needAmmoAmount = magazineAmmoAmout - currentAmmoAmount;
+        int loadAmmoAmount = Mathf.Min(totalAmmoAmonut, needAmmoAmount);
+
+        currentAmmoAmount += loadAmmoAmount;
+        totalAmmoAmonut -= loadAmmoAmount;
+        canReload = false;
+    }
+
+    void UpdataAmmoText()
+    {
+        ammo.text = currentAmmoAmount.ToString() + "/" + totalAmmoAmonut.ToString();
     }
 }

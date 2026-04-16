@@ -4,6 +4,7 @@ public class WeaponManeuver : MonoBehaviour
 {
     Animator animator;
     public PlayerController playerController;
+    public GunShoot gunShoot;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -19,8 +20,12 @@ public class WeaponManeuver : MonoBehaviour
 
     void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-                animator.SetTrigger("isReloading");
+        if (gunShoot.canReload)
+        {
+            animator.SetTrigger("isReloading");
+            gunShoot.canReload = false;
+        }
+        
     }
 
     void Run()
