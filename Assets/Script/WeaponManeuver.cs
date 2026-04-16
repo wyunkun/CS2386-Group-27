@@ -12,10 +12,25 @@ public class WeaponManeuver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Reload();
+        Run();
+        Jump();
+    }
+
+    void Reload()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+                animator.SetTrigger("isReloading");
+    }
+
+    void Run()
+    {
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         animator.SetBool("isRunning", isRunning);
         Debug.Log("isRunning = " + isRunning);
-
+    }
+    void Jump()
+    {
         if (playerController.isGrounded)
         {
             if (Input.GetKeyDown(KeyCode.Space))
