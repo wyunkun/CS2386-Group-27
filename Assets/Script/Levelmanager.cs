@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -26,12 +25,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         IsPlaying = true;
-
-        if (winPanel != null)
-            winPanel.SetActive(false);
-
-        if (losePanel != null)
-            losePanel.SetActive(false);
+        if (winPanel != null) winPanel.SetActive(false);
+        if (losePanel != null) losePanel.SetActive(false);
     }
 
     void Update()
@@ -47,31 +42,36 @@ public class LevelManager : MonoBehaviour
     {
         IsPlaying = false;
         PlaySoundClip(winSFX);
-
-        if (winPanel != null)
-            winPanel.SetActive(true);
-
+        if (winPanel != null) winPanel.SetActive(true);
         Time.timeScale = 0f;
-        StartCoroutine(ReloadAfterDelay());
+        StartCoroutine(NextLevelAfterDelay());
     }
 
     public void LevelLost()
     {
         IsPlaying = false;
         PlaySoundClip(loseSFX);
-
-        if (losePanel != null)
-            losePanel.SetActive(true);
-
+        if (losePanel != null) losePanel.SetActive(true);
         Time.timeScale = 0f;
         StartCoroutine(ReloadAfterDelay());
+    }
+
+    IEnumerator NextLevelAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        Time.timeScale = 1f;
+        int next = SceneManager.GetActiveScene().buildIndex + 1;
+        if (next < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(next);
+        else
+            SceneManager.LoadScene(0);
     }
 
     IEnumerator ReloadAfterDelay()
     {
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void PlaySoundClip(AudioClip clip)

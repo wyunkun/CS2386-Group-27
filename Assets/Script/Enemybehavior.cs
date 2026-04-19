@@ -5,14 +5,12 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float detectionDistance = 10f;
-    public float stopDistance = 1.5f;
+    public float minDistance = 0.5f;
 
     [Header("Attack Settings")]
     public int damageToPlayer = 20;
-    public float attackDistance = 2f;
     public float attackCooldown = 1.5f;
     public int maxHits = 5;
-    public float attackAnimTime = 1f;
 
     [Header("Audio")]
     public AudioClip hitSound;
@@ -21,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     private Transform player;
     private AudioSource audioSource;
     private Animator animator;
+    private Rigidbody rb;
     private float attackTimer = 0f;
     private int hitCount = 0;
     private bool isAttacking = false;
@@ -33,27 +32,23 @@ public class EnemyBehavior : MonoBehaviour
         else
             Debug.LogWarning("Enemy: No GameObject with tag 'Player' found!");
 
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-            audioSource = gameObject.AddComponent<AudioSource>();
-
+        audioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
+
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true; 
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (player == null || !PlayerHealth.isAlive) return;
+        if (player == null) return;
 
         if (attackTimer > 0f)
-            attackTimer -= Time.deltaTime;
+            attackTimer -= Time.fixedDeltaTime;
 
-        Vector3 toPlayer = player.position - transform.position;
-        toPlayer.y = 0f;
-        float distance = toPlayer.magnitude;
-
-        bool inRange = distance <= detectionDistance;
-        bool canMove = inRange && distance > stopDistance && !isAttacking;
-        bool canAttack = inRange && distance <= attackDistance && attackTimer <= 0f && !isAttacking;
+        float distance = Vector3.Distance(transform.position, player.position);
+        bool inRange = distance <= detectionDistance && PlayerHealth.isAlive;
+        bool canMove = inRange && distance > minDistance && !isAttacking;
 
         if (animator != null)
         {
@@ -63,20 +58,18 @@ public class EnemyBehavior : MonoBehaviour
 
         if (canMove)
         {
-            Vector3 direction = toPlayer.normalized;
-            transform.position += direction * moveSpeed * Time.deltaTime;
+            Vector3 direction = (player.position - transform.position);
+            direction.y = 0f;
+            direction.Normalize();
+
+            Vector3 newPos = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPos);
 
             if (direction != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(
-                    transform.rotation,
-                    Quaternion.LookRotation(direction),
-                    10f * Time.deltaTime
-                );
-            }
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 10f * Time.fixedDeltaTime);
         }
 
-        if (canAttack)
+        if (inRange && distance <= minDistance && attackTimer <= 0f && !isAttacking)
             Attack();
     }
 
@@ -85,19 +78,15 @@ public class EnemyBehavior : MonoBehaviour
         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
         if (playerHealth == null) return;
 
-        isAttacking = true;
-        attackTimer = attackCooldown;
-
-        if (animator != null)
-            animator.SetBool("isAttacking", true);
-
         playerHealth.TakeDamage(damageToPlayer);
         hitCount++;
+        attackTimer = attackCooldown;
+        isAttacking = true;
 
         if (hitSound != null)
             audioSource.PlayOneShot(hitSound, soundVolume);
 
-        Invoke(nameof(StopAttack), attackAnimTime);
+        Invoke(nameof(StopAttack), 1f);
 
         if (hitCount >= maxHits)
         {
@@ -109,8 +98,5 @@ public class EnemyBehavior : MonoBehaviour
     void StopAttack()
     {
         isAttacking = false;
-
-        if (animator != null)
-            animator.SetBool("isAttacking", false);
     }
 }

@@ -7068,33 +7068,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1060211873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &197298188 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7151435588471895099, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-  m_PrefabInstance: {fileID: 1574499902}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &197298195
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197298188}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &209196925
 GameObject:
   m_ObjectHideFlags: 0
@@ -20084,6 +20057,152 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488412948}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &494128663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494128666}
+  - component: {fileID: 494128665}
+  - component: {fileID: 494128664}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &494128664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494128663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecb23f78bc38934bad58291275a6afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  winPanel: {fileID: 1359111065}
+  losePanel: {fileID: 1150406541}
+  winSFX: {fileID: 0}
+  loseSFX: {fileID: 0}
+--- !u!82 &494128665
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494128663}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &494128666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494128663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.17449, y: 19.46955, z: 14.438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517299097
 GameObject:
   m_ObjectHideFlags: 0
@@ -46408,26 +46527,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4254695904697075786, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 197298195}
-    - target: {fileID: 4254695904697075786, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: attackRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4254695904697075786, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: whatIsPlayer.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5353858950256091873, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7151435588462528423, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6a3c707cecab1a349b358e52ef7e30c4, type: 2}
     - target: {fileID: 7151435588471859225, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.463255
@@ -46468,14 +46567,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7151435588471859227, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 7151435588471859227, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 101.24
-      objectReference: {fileID: 0}
     - target: {fileID: 7151435588471895099, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
       propertyPath: m_Name
       value: Robot1 (1)
@@ -46483,10 +46574,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7151435588471895099, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 197298195}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c0299750d73b7439e3546204c5b07d, type: 3}
 --- !u!1 &1595368959 stripped
 GameObject:
@@ -52471,6 +52559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleporter_with_lights (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58319,6 +58411,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleporter_with_lights (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60419,6 +60515,10 @@ PrefabInstance:
     - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
       propertyPath: m_Name
       value: teleporter_with_lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474130958839079053, guid: e2f794b87f236ea448ca277261f8d786, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67094,3 +67194,4 @@ SceneRoots:
   - {fileID: 76551302}
   - {fileID: 1547163132}
   - {fileID: 139822031}
+  - {fileID: 494128666}
