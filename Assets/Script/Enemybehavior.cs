@@ -5,12 +5,14 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float detectionDistance = 10f;
-    public float minDistance = 0.5f;
+    public float stopDistance = 1.5f;
 
     [Header("Attack Settings")]
     public int damageToPlayer = 20;
+    public float attackDistance = 2f;
     public float attackCooldown = 1.5f;
     public int maxHits = 5;
+    public float attackAnimTime = 1f;
 
     [Header("Audio")]
     public AudioClip hitSound;
@@ -21,6 +23,7 @@ public class EnemyBehavior : MonoBehaviour
     private Animator animator;
     private float attackTimer = 0f;
     private int hitCount = 0;
+    private bool isAttacking = false;
 
     void Start()
     {
@@ -39,68 +42,74 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
+        if (player == null || !PlayerHealth.isAlive) return;
 
         if (attackTimer > 0f)
             attackTimer -= Time.deltaTime;
 
-        float distance = Vector3.Distance(transform.position, player.position);
-        bool inRange = distance <= detectionDistance && distance > minDistance && PlayerHealth.isAlive;
+        Vector3 toPlayer = player.position - transform.position;
+        toPlayer.y = 0f;
+        float distance = toPlayer.magnitude;
+
+        bool inRange = distance <= detectionDistance;
+        bool canMove = inRange && distance > stopDistance && !isAttacking;
+        bool canAttack = inRange && distance <= attackDistance && attackTimer <= 0f && !isAttacking;
 
         if (animator != null)
-            animator.SetBool("isWalking", inRange);
-
-        if (inRange)
         {
-            Vector3 direction = player.position - transform.position;
-            direction.y = 0f;
-            direction.Normalize();
+            animator.SetBool("isWalking", canMove);
+            animator.SetBool("isAttacking", isAttacking);
+        }
 
-            Vector3 newPosition = transform.position + direction * moveSpeed * Time.deltaTime;
-            newPosition.y = transform.position.y;
-            transform.position = newPosition;
+        if (canMove)
+        {
+            Vector3 direction = toPlayer.normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
 
             if (direction != Vector3.zero)
             {
-                Quaternion targetRot = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 10f * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    Quaternion.LookRotation(direction),
+                    10f * Time.deltaTime
+                );
             }
+        }
+
+        if (canAttack)
+            Attack();
+    }
+
+    void Attack()
+    {
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth == null) return;
+
+        isAttacking = true;
+        attackTimer = attackCooldown;
+
+        if (animator != null)
+            animator.SetBool("isAttacking", true);
+
+        playerHealth.TakeDamage(damageToPlayer);
+        hitCount++;
+
+        if (hitSound != null)
+            audioSource.PlayOneShot(hitSound, soundVolume);
+
+        Invoke(nameof(StopAttack), attackAnimTime);
+
+        if (hitCount >= maxHits)
+        {
+            CancelInvoke();
+            Destroy(gameObject);
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void StopAttack()
     {
-        if (!collision.collider.CompareTag("Player")) return;
-        if (attackTimer > 0f) return;
-        if (!PlayerHealth.isAlive) return;
+        isAttacking = false;
 
-        PlayerHealth playerHealth = collision.collider.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(damageToPlayer);
-            hitCount++;
-            attackTimer = attackCooldown;
-
-            if (animator != null)
-            {
-                animator.SetBool("isAttacking", true);
-                Invoke("StopAttackAnim", 1f);
-            }
-
-            if (hitSound != null)
-                audioSource.PlayOneShot(hitSound, soundVolume);
-
-            if (hitCount >= maxHits)
-                Destroy(gameObject);
-        }
-        else
-        {
-            Debug.LogError("PlayerHealth component not found on Player!");
-        }
-    }
-
-    void StopAttackAnim()
-    {
         if (animator != null)
             animator.SetBool("isAttacking", false);
     }
