@@ -9,11 +9,9 @@ public class Teleporter : MonoBehaviour
     private bool playerNearby = false;
     private bool isActivated = false;
 
-    void OnEnable()
+    void Start()
     {
         allPortals.Add(this);
-        if (activatedEffect != null)
-            activatedEffect.SetActive(false);
     }
 
     void OnDisable()
@@ -27,13 +25,9 @@ public class Teleporter : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
         if (!isActivated)
-        {
             ActivatePortal();
-        }
         else
-        {
             TeleportPlayer();
-        }
     }
 
     void ActivatePortal()
@@ -41,7 +35,7 @@ public class Teleporter : MonoBehaviour
         isActivated = true;
 
         if (activatedEffect != null)
-            activatedEffect.SetActive(true);
+            Instantiate(activatedEffect, transform.position, Quaternion.identity);
 
         Bunker bunker = FindFirstObjectByType<Bunker>();
         if (bunker != null)
