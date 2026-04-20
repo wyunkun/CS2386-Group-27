@@ -7,11 +7,8 @@ public class LevelManager : MonoBehaviour
 {
     public static bool IsPlaying { get; private set; }
 
-    [Header("UI")]
     public GameObject winPanel;
     public GameObject losePanel;
-
-    [Header("Audio")]
     public AudioClip winSFX;
     public AudioClip loseSFX;
 
@@ -41,22 +38,22 @@ public class LevelManager : MonoBehaviour
     public void LevelBeat()
     {
         IsPlaying = false;
-        PlaySoundClip(winSFX);
+        if (winSFX != null) audioSource.PlayOneShot(winSFX);
         if (winPanel != null) winPanel.SetActive(true);
         Time.timeScale = 0f;
-        StartCoroutine(NextLevelAfterDelay());
+        StartCoroutine(LoadNextLevel());
     }
 
     public void LevelLost()
     {
         IsPlaying = false;
-        PlaySoundClip(loseSFX);
+        if (loseSFX != null) audioSource.PlayOneShot(loseSFX);
         if (losePanel != null) losePanel.SetActive(true);
         Time.timeScale = 0f;
-        StartCoroutine(ReloadAfterDelay());
+        StartCoroutine(ReloadLevel());
     }
 
-    IEnumerator NextLevelAfterDelay()
+    IEnumerator LoadNextLevel()
     {
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1f;
@@ -67,19 +64,10 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(0);
     }
 
-    IEnumerator ReloadAfterDelay()
+    IEnumerator ReloadLevel()
     {
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    void PlaySoundClip(AudioClip clip)
-    {
-        if (clip != null)
-        {
-            audioSource.clip = clip;
-            audioSource.Play();
-        }
     }
 }
