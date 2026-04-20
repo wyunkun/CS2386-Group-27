@@ -2,14 +2,9 @@ using UnityEngine;
 
 public class Blade : MonoBehaviour
 {
-    [Header("Blade Settings")]
     public int damageToPlayer = 10;
     public float damageCooldown = 1f;
-
-    [Header("Rotation Settings")]
     public float rotationSpeed = 180f;
-
-    [Header("Audio")]
     public AudioClip spinSFX;
     public AudioClip hitSFX;
 
@@ -19,8 +14,10 @@ public class Blade : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
 
-        if (audioSource != null && spinSFX != null)
+        if (spinSFX != null)
         {
             audioSource.clip = spinSFX;
             audioSource.loop = true;
@@ -38,25 +35,30 @@ public class Blade : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("enemy"))
+        if (!other.CompareTag("enemy")) return;
+
+        DestoryRobot dr = other.GetComponent<DestoryRobot>();
+        if (dr != null && dr.explosionEffect != null)
         {
-            Destroy(other.gameObject);
+            GameObject explosion = Instantiate(dr.explosionEffect, other.transform.position, Quaternion.identity);
+            Destroy(explosion, 2f);
         }
+
+        Destroy(other.gameObject);
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && damageTimer <= 0f)
-        {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageToPlayer);
-                damageTimer = damageCooldown;
+        if (!other.CompareTag("Player")) return;
+        if (damageTimer > 0f) return;
 
-                if (hitSFX != null && audioSource != null)
-                    audioSource.PlayOneShot(hitSFX);
-            }
-        }
+        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        if (playerHealth == null) return;
+
+        playerHealth.TakeDamage(damageToPlayer);
+        damageTimer = damageCooldown;
+
+        if (hitSFX != null)
+            audioSource.PlayOneShot(hitSFX);
     }
 }
