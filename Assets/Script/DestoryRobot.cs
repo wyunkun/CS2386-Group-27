@@ -2,21 +2,18 @@ using UnityEngine;
 
 public class DestoryRobot : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject explosionEffect;
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet"))
+        {
+            if (explosionEffect != null)
+            {
+                GameObject explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                Destroy(explosion, 2f);
+            }
             Destroy(gameObject);
+        }
     }
 }
