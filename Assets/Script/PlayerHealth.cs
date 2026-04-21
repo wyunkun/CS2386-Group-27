@@ -31,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
     private float originalRunSpeed;
     private Coroutine speedBoostCoroutine;
 
+    void Awake()
+    {
+        isAlive = true;
+    }
     void Start()
     {
         currentHealth = startingHealth;

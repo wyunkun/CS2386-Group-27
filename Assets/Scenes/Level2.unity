@@ -48410,6 +48410,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleporter_with_lights (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007541972182156802, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007541972182156802, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007541972182156802, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007541972182156802, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007541972182156802, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007541972182156802, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

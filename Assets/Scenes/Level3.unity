@@ -56011,6 +56011,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: teleporter_with_lights (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773542008912650774, guid: 89f5f719ca2e28641b489ba7955ba280, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
