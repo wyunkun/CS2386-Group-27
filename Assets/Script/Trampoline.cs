@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class Trampoline : MonoBehaviour
 {
-    [Header("Trampoline Settings")]
-    public float jumpForce = 20f;
+    public float jumpForce = 50f;
+    public GameObject jumpEffect;
 
     private bool playerOnTrampoline = false;
     private Rigidbody playerRb;
+
+    void Start()
+    {
+        if (jumpEffect != null)
+            Instantiate(jumpEffect, transform.position + Vector3.up * 0.1f, Quaternion.identity, transform);
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,10 +34,11 @@ public class Trampoline : MonoBehaviour
 
     void Update()
     {
-        if (playerOnTrampoline && playerRb != null && Input.GetKeyDown(KeyCode.Space))
-        {
-            playerRb.linearVelocity = new Vector3(playerRb.linearVelocity.x, 0f, playerRb.linearVelocity.z);
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        if (!playerOnTrampoline) return;
+        if (playerRb == null) return;
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+
+        playerRb.linearVelocity = new Vector3(playerRb.linearVelocity.x, 0f, playerRb.linearVelocity.z);
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
