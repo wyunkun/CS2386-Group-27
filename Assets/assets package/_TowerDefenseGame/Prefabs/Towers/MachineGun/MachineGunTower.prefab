@@ -135,20 +135,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1401014823036408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e0cc2d21e9e8644a6fde983d07a470, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c05f5c7477c85f4d8cc9f2e29fa0d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAI
   currentState: 0
   turret: {fileID: 4877050138446582}
   rotationSpeed: 30
-  maxRotationAngle: 90
+  maxrotationAngle: 90
   detectionRange: 10
   projectilePrefab: {fileID: 4132166219533410251, guid: e1ca50c5fe30d42c68e1b3170735b7bc, type: 3}
   firePoint: {fileID: 4457715277627928}
-  fireRate: 5
-  destroyPrefab: {fileID: 1082826025734650, guid: 7a0476686964e41ac8320b7cf37868c2, type: 3}
-  buildPrefab: {fileID: 1395313577031670, guid: c559c1920b5d04e6d83aa4464fba5c68, type: 3}
-  health: 20
+  fireRate: 2
+  health: 100
+  destoryPrefab: {fileID: 1082826025734650, guid: 7a0476686964e41ac8320b7cf37868c2, type: 3}
 --- !u!65 &-908029781262730521
 BoxCollider:
   m_ObjectHideFlags: 0

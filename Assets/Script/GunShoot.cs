@@ -36,6 +36,8 @@ public class GunShoot : MonoBehaviour
         {
             if (!CanShoot())
                 return;
+            if (Cursor.lockState != CursorLockMode.Locked)
+                return;
             if(currentAmmoAmount > 0)
             {
                 nextFireTime = Time.time + fireRate;

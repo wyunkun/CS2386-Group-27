@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(AudioSource))]
 public class LevelManager : MonoBehaviour
@@ -25,12 +26,28 @@ public class LevelManager : MonoBehaviour
     public Button backToMainButton;
 
     [Header("Settings Menu")]
+    public Slider sensitivitySlider;
+    public float defaultSensitivity = 2f;
+    public TMP_Text sensitivityText;
+    public TMP_Text playCountText;
+    public Slider volumeSlider;
+    public TMP_Text volumeText;
+    public GameObject settingsPanel;
+
+    [Header("InGame Settings Panel")]
+    public GameObject inGameSettingsPanel;
+    public Slider inGameSensitivitySlider;
+    public TMP_Text inGameSensitivityText;
+    public Slider inGameVolumeSlider;
+    public TMP_Text inGameVolumeText;
+
     private AudioSource audioSource;
     private int count;
     private int playCount;
 
     void Awake()
     {
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
         bool isMainMenu = SceneManager.GetActiveScene().buildIndex == 0;
         IsPlaying = !isMainMenu;
         count = PlayerPrefs.GetInt("LevelIndex", 0);
@@ -40,17 +57,51 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.Save(); 
 
         audioSource = GetComponent<AudioSource>();
+        Debug.Log("LevelManager Awake executed");
 
     }
 
     void Start()
     {
-        
+        if (settingsButton != null)
+        {
+            settingsButton.onClick.AddListener(ShowSettingMenu);
+            Debug.Log("Settings button listener added");
+        }
         if (winPanel != null) winPanel.SetActive(false);
         if (losePanel != null) losePanel.SetActive(false);
+        //if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
+            volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+            UpdateVolumeText(volumeSlider.value);
+        }
+        if (playCountText != null)
+            playCountText.text = "You have played this game: " + playCount;
+        //if (continueButton != null && !PlayerPrefs.HasKey("LevelIndex"))
+            //continueButton.interactable = false;
+        if (sensitivitySlider != null)
+        {
+            sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity", defaultSensitivity);
+            sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+            UpdateSensitivityText(sensitivitySlider.value);
+        }
+        if (inGameSettingsPanel != null) inGameSettingsPanel.SetActive(false);
 
-        if (!PlayerPrefs.HasKey("LevelIndex"))
-            continueButton.interactable = false;
+        if (inGameSensitivitySlider != null)
+        {
+            inGameSensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity", defaultSensitivity);
+            inGameSensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+            UpdateInGameSensitivityText(inGameSensitivitySlider.value);
+        }
+
+        if (inGameVolumeSlider != null)
+        {
+            inGameVolumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
+            inGameVolumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+            UpdateInGameVolumeText(inGameVolumeSlider.value);
+        }
     }
 
     void Update()
@@ -60,8 +111,35 @@ public class LevelManager : MonoBehaviour
             IsPlaying = false;
             LevelLost();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ShowInGameSettings();
+        }
+    }
+    void UpdateSensitivityText(float value)
+    {
+        if (sensitivityText != null)
+            sensitivityText.text = value.ToString();
     }
 
+    public void ShowSettingMenu()
+    {   
+        Debug.Log("ShowSettingMenu called");
+        settingsPanel.SetActive(true);
+        newGameButton.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
+        settingsButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+    }
+
+    public void HideSettingMenu()
+    {
+        settingsPanel.SetActive(false);
+        newGameButton.gameObject.SetActive(true);
+        continueButton.gameObject.SetActive(true);
+        settingsButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+    }
     public void LevelBeat()
     {
         IsPlaying = false;
@@ -111,11 +189,6 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void ShowSettingMenu()
-    {
-        
-    }
-
     public void NewGame()
     {
         PlayerPrefs.SetInt("LevelIndex", 1);
@@ -130,7 +203,78 @@ public class LevelManager : MonoBehaviour
     }
 
     public void ExitGame()
+    {   
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
+
+    void OnSensitivityChanged(float value)
     {
-        
+        PlayerPrefs.SetFloat("Sensitivity", value);
+        PlayerPrefs.Save();
+        UpdateSensitivityText(value);
+        UpdateInGameSensitivityText(value);
+
+    
+        if (sensitivitySlider != null && sensitivitySlider.value != value)
+            sensitivitySlider.value = value;
+        if (inGameSensitivitySlider != null && inGameSensitivitySlider.value != value)
+            inGameSensitivitySlider.value = value;
+    }
+
+    void OnVolumeChanged(float value)
+    {
+        AudioListener.volume = value;
+        PlayerPrefs.SetFloat("Volume", value);
+        PlayerPrefs.Save();
+        UpdateVolumeText(value);
+        UpdateInGameVolumeText(value);
+
+        if (volumeSlider != null && volumeSlider.value != value)
+            volumeSlider.value = value;
+        if (inGameVolumeSlider != null && inGameVolumeSlider.value != value)
+            inGameVolumeSlider.value = value;
+    }
+
+    void UpdateInGameSensitivityText(float value)
+    {
+        if (inGameSensitivityText != null)
+            inGameSensitivityText.text = value.ToString("F1");
+    }
+
+    void UpdateInGameVolumeText(float value)
+    {
+        if (inGameVolumeText != null)
+        inGameVolumeText.text = Mathf.RoundToInt(value * 100) + "%";
+    }
+    void UpdateVolumeText(float value)
+    {
+        if (volumeText != null)
+            volumeText.text = Mathf.RoundToInt(value * 100) + "%";
+    }
+
+    public void ShowInGameSettings()
+    {
+        inGameSettingsPanel.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        PlayerController pc = FindFirstObjectByType<PlayerController>();
+        if (pc != null) 
+            pc.enabled = false;
+    }
+
+    public void HideInGameSettings()
+    {   
+        Debug.Log("HideInGameSettings called");
+        inGameSettingsPanel.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        PlayerController pc = FindFirstObjectByType<PlayerController>();
+        if (pc != null)
+            pc.enabled = true;
     }
 }

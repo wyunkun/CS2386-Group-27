@@ -90,8 +90,9 @@ public class PlayerController : MonoBehaviour
 
     void Look()
     {
-        float mx = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float my = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float sensitivity = PlayerPrefs.GetFloat("Sensitivity", mouseSensitivity);
+        float mx = Input.GetAxis("Mouse X") * sensitivity;
+        float my = Input.GetAxis("Mouse Y") * sensitivity;
 
 
         transform.Rotate(Vector3.up * mx);

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class Teleporter : MonoBehaviour
 {
@@ -8,7 +9,20 @@ public class Teleporter : MonoBehaviour
     private static List<Teleporter> allPortals = new List<Teleporter>();
     private bool playerNearby = false;
     private bool isActivated = false;
+    public bool isLevelGate = false;  
 
+    void Awake()
+    {
+        foreach (Teleporter t in allPortals)
+        {
+            if (t != this && t.gameObject.name == gameObject.name)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         allPortals.Add(this);
@@ -26,6 +40,8 @@ public class Teleporter : MonoBehaviour
 
         if (!isActivated)
             ActivatePortal();
+        else if (isLevelGate)
+            StartCoroutine(DelayedLevelBeat());
         else
             TeleportPlayer();
     }
@@ -40,11 +56,17 @@ public class Teleporter : MonoBehaviour
         Bunker bunker = FindFirstObjectByType<Bunker>();
         if (bunker != null)
             bunker.SpawnEnemies();
-
-        CheckWinCondition();
     }
 
-    void CheckWinCondition()
+    IEnumerator DelayedLevelBeat()
+    {
+        yield return new WaitForSeconds(1f);
+        LevelManager lm = FindFirstObjectByType<LevelManager>();
+        if (lm != null)
+            lm.LevelBeat();
+    }
+
+    /*void CheckWinCondition()
     {
         foreach (Teleporter portal in allPortals)
         {
@@ -55,7 +77,7 @@ public class Teleporter : MonoBehaviour
         LevelManager lm = FindFirstObjectByType<LevelManager>();
         if (lm != null)
             lm.LevelBeat();
-    }
+    }*/
 
     void TeleportPlayer()
     {

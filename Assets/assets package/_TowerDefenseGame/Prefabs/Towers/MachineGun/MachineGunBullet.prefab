@@ -14559,14 +14559,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4132166219533410251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234927bf3ad9d1d46bd7a4d20e671ce0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c5a42f4ca2c47e458769891c3764730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
-  speed: 20
+  speed: 10
   rotationSpeed: 5
-  lifetime: 5
+  lifeTime: 5
   damage: 10
-  bulletHitVFX: {fileID: 534260366808470948, guid: e7865b22134124ac58e486a5f125e7c3, type: 3}
+  bulletHitPrefab: {fileID: 1337568691461264, guid: a4e0e87699dbd400aaf85d616d2618f8, type: 3}
 --- !u!1 &4739401406311911194
 GameObject:
   m_ObjectHideFlags: 0

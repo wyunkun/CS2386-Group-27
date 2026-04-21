@@ -483,6 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Teleporter
   activatedEffect: {fileID: 3744133877081091469, guid: a2a060732547fe64581bb0cb3c2bdf1d, type: 3}
+  isLevelGate: 0
 --- !u!1 &3923454251829956540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: d83f5c764242e56429d59bea5e8374ba, type: 3}

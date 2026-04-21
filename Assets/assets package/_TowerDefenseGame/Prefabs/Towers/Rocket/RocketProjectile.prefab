@@ -133,11 +133,11 @@ GameObject:
   - component: {fileID: 4906878136576746}
   - component: {fileID: 54053339254610620}
   - component: {fileID: 136420752035335378}
-  - component: {fileID: 8932225521290153934}
   - component: {fileID: -8709714622627317065}
+  - component: {fileID: 3314864876614013402}
   m_Layer: 15
   m_Name: RocketProjectile
-  m_TagString: Bullet
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,31 +201,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 20
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8932225521290153934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593046666255972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234927bf3ad9d1d46bd7a4d20e671ce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
-  speed: 13
-  rotationSpeed: 10
-  lifetime: 2
-  damage: 30
-  bulletHitVFX: {fileID: 1082826025734650, guid: f43a73bac381a4517bdade908e622a9e, type: 3}
 --- !u!82 &-8709714622627317065
 AudioSource:
   m_ObjectHideFlags: 0
@@ -323,6 +306,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3314864876614013402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593046666255972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ceb013ed200d94d83a85473e75b1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  explosionPrefab: {fileID: 1082826025734650, guid: 10eef6400678c4c75b2ac94e435a2bd5, type: 3}
+  lifeTime: 5
 --- !u!1 &1827127167504934
 GameObject:
   m_ObjectHideFlags: 0
