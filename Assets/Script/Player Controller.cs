@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool runHeld;
     private bool jumpPressed;
-    private bool isGrounded;
+    public bool isGrounded;
     private float pitch;
 
     void Start()
