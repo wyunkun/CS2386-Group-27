@@ -17,7 +17,7 @@ public class Lava : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
 
         audioSource.spatialBlend = 0f;
-        audioSource.volume = 1f;
+        audioSource.volume = 30f;
 
         if (ambientSFX != null)
         {

@@ -76,7 +76,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, startingHealth);
 
         if (hitSFX != null)
-            AudioSource.PlayClipAtPoint(hitSFX, transform.position);
+            AudioSource.PlayClipAtPoint(hitSFX, transform.position, 10f);
 
         UpdateHealthText();
 
