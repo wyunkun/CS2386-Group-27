@@ -5,6 +5,20 @@ public class Bunker : MonoBehaviour
     public GameObject enemyPrefab;
     public int spawnCount = 2;
     public float spawnDistance = 3f;
+    public float spawnInterval = 10f;
+
+    private float timer = 5f;
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= spawnInterval)
+        {
+            timer = 0f;
+            SpawnEnemies();
+        }
+    }
 
     public void SpawnEnemies()
     {

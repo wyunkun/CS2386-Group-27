@@ -4,25 +4,38 @@ public class DroneEnemy : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 5f;
-    public float orbitDistance = 8f;
-    public float orbitHeight = 5f;
-    public float orbitSpeed = 30f;
+    public float minOrbitDistance = 4f;
+    public float maxOrbitDistance = 8f;
+    public float minOrbitHeight = 3f;
+    public float maxOrbitHeight = 6f;
+    public float minOrbitSpeed = 20f;
+    public float maxOrbitSpeed = 50f;
 
     [Header("Attack")]
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float attackRange = 12f;
+    public float attackRange = 10f;
     public float fireRate = 2f;
 
     private Transform player;
     private float fireCooldown = 0f;
     private float orbitAngle = 0f;
+    private float orbitDistance;
+    private float orbitHeight;
+    private float orbitSpeed;
+    private float orbitDirection;
 
     void Start()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
             player = playerObject.transform;
+
+        orbitDistance = Random.Range(minOrbitDistance, maxOrbitDistance);
+        orbitHeight = Random.Range(minOrbitHeight, maxOrbitHeight);
+        orbitSpeed = Random.Range(minOrbitSpeed, maxOrbitSpeed);
+        orbitDirection = Random.value > 0.5f ? 1f : -1f;
+        orbitAngle = Random.Range(0f, 360f);
     }
 
     void Update()
@@ -41,7 +54,7 @@ public class DroneEnemy : MonoBehaviour
         }
         else
         {
-            orbitAngle += orbitSpeed * Time.deltaTime;
+            orbitAngle += orbitSpeed * orbitDirection * Time.deltaTime;
             float rad = orbitAngle * Mathf.Deg2Rad;
             Vector3 orbitPos = player.position + new Vector3(
                 Mathf.Cos(rad) * orbitDistance,

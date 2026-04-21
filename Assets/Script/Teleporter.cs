@@ -5,24 +5,12 @@ using System.Collections;
 public class Teleporter : MonoBehaviour
 {
     public GameObject activatedEffect;
+    public bool isLevelGate = false;
 
     private static List<Teleporter> allPortals = new List<Teleporter>();
     private bool playerNearby = false;
     private bool isActivated = false;
-    public bool isLevelGate = false;  
 
-    void Awake()
-    {
-        foreach (Teleporter t in allPortals)
-        {
-            if (t != this && t.gameObject.name == gameObject.name)
-            {
-                Destroy(gameObject);
-                return;
-            }
-        }
-        DontDestroyOnLoad(gameObject);
-    }
     void Start()
     {
         allPortals.Add(this);
@@ -39,11 +27,17 @@ public class Teleporter : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.E)) return;
 
         if (!isActivated)
+        {
             ActivatePortal();
+        }
         else if (isLevelGate)
+        {
             StartCoroutine(DelayedLevelBeat());
+        }
         else
+        {
             TeleportPlayer();
+        }
     }
 
     void ActivatePortal()
@@ -52,32 +46,7 @@ public class Teleporter : MonoBehaviour
 
         if (activatedEffect != null)
             Instantiate(activatedEffect, transform.position, Quaternion.identity);
-
-        Bunker bunker = FindFirstObjectByType<Bunker>();
-        if (bunker != null)
-            bunker.SpawnEnemies();
     }
-
-    IEnumerator DelayedLevelBeat()
-    {
-        yield return new WaitForSeconds(1f);
-        LevelManager lm = FindFirstObjectByType<LevelManager>();
-        if (lm != null)
-            lm.LevelBeat();
-    }
-
-    /*void CheckWinCondition()
-    {
-        foreach (Teleporter portal in allPortals)
-        {
-            if (!portal.isActivated)
-                return;
-        }
-
-        LevelManager lm = FindFirstObjectByType<LevelManager>();
-        if (lm != null)
-            lm.LevelBeat();
-    }*/
 
     void TeleportPlayer()
     {
@@ -97,6 +66,14 @@ public class Teleporter : MonoBehaviour
                 return;
             }
         }
+    }
+
+    IEnumerator DelayedLevelBeat()
+    {
+        yield return new WaitForSeconds(1f);
+        LevelManager lm = FindFirstObjectByType<LevelManager>();
+        if (lm != null)
+            lm.LevelBeat();
     }
 
     void OnTriggerEnter(Collider other)
