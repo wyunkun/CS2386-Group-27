@@ -7,7 +7,7 @@ public class Bunker : MonoBehaviour
     public float spawnDistance = 3f;
     public float spawnInterval = 10f;
 
-    private float timer = 5f;
+    public float timer = 5f;
 
     void Update()
     {

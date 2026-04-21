@@ -278,6 +278,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5542533203249564656, guid: f3d54087633ba194f8679763aecce46d, type: 3}
   spawnCount: 2
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
 --- !u!1 &36822211
 GameObject:
   m_ObjectHideFlags: 0
@@ -6363,6 +6365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!1 &246833398
 GameObject:
   m_ObjectHideFlags: 0
@@ -11608,6 +11611,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 59437135238740386, guid: be06ef98729e8504fbf7c771db1e4ad2, type: 3}
   spawnCount: 1
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 7
 --- !u!4 &322964234
 Transform:
   m_ObjectHideFlags: 0
@@ -18307,6 +18312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &590470070
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18896,6 +18902,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5542533203249564656, guid: f3d54087633ba194f8679763aecce46d, type: 3}
   spawnCount: 2
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
 --- !u!1 &720245765
 GameObject:
   m_ObjectHideFlags: 0
@@ -24888,6 +24896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &950595928
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25690,6 +25699,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 59437135238740386, guid: be06ef98729e8504fbf7c771db1e4ad2, type: 3}
   spawnCount: 1
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 7
 --- !u!1 &1137971795
 GameObject:
   m_ObjectHideFlags: 0
@@ -26164,6 +26175,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 59437135238740386, guid: be06ef98729e8504fbf7c771db1e4ad2, type: 3}
   spawnCount: 1
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 7
 --- !u!1001 &1177910561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32531,6 +32544,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5542533203249564656, guid: f3d54087633ba194f8679763aecce46d, type: 3}
   spawnCount: 2
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
 --- !u!1 &1351317173
 GameObject:
   m_ObjectHideFlags: 0
@@ -37966,6 +37981,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 59437135238740386, guid: be06ef98729e8504fbf7c771db1e4ad2, type: 3}
   spawnCount: 1
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 7
 --- !u!4 &1500229902
 Transform:
   m_ObjectHideFlags: 0
@@ -43255,6 +43272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &1654008503
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -51839,6 +51857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &2141571110
 CapsuleCollider:
   m_ObjectHideFlags: 0

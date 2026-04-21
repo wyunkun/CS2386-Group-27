@@ -310,6 +310,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5542533203249564656, guid: f3d54087633ba194f8679763aecce46d, type: 3}
   spawnCount: 2
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
 --- !u!1 &11288572
 GameObject:
   m_ObjectHideFlags: 0
@@ -6962,6 +6964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!1 &181033941
 GameObject:
   m_ObjectHideFlags: 0
@@ -20179,6 +20182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &590470070
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21220,6 +21224,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5542533203249564656, guid: f3d54087633ba194f8679763aecce46d, type: 3}
   spawnCount: 2
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
 --- !u!1 &720245765
 GameObject:
   m_ObjectHideFlags: 0
@@ -27984,6 +27990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &950595928
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29375,6 +29382,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b713ac5c4cf4d7549963770c4174d3b5, type: 3}
   m_PrefabInstance: {fileID: 1702188876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1107605483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107605485}
+  - component: {fileID: 1107605484}
+  m_Layer: 0
+  m_Name: DroneBunker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1107605484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107605483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf501cc0a50cf44f837255fd8002b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bunker
+  enemyPrefab: {fileID: 59437135238740386, guid: be06ef98729e8504fbf7c771db1e4ad2, type: 3}
+  spawnCount: 2
+  spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
+--- !u!4 &1107605485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107605483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.56, y: 39.52, z: 16.89989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1115010872
 GameObject:
   m_ObjectHideFlags: 0
@@ -36262,6 +36318,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5542533203249564656, guid: f3d54087633ba194f8679763aecce46d, type: 3}
   spawnCount: 2
   spawnDistance: 3
+  spawnInterval: 10
+  timer: 5
 --- !u!1 &1329555140
 GameObject:
   m_ObjectHideFlags: 0
@@ -47917,6 +47975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &1654008503
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -58702,6 +58761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   jumpForce: 50
+  jumpEffect: {fileID: 4932088507883938021, guid: 0e5709a7ddb77924090c112cf73bb98a, type: 3}
 --- !u!136 &2141571110
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -61139,3 +61199,4 @@ SceneRoots:
   - {fileID: 2119009575}
   - {fileID: 1960347680}
   - {fileID: 1996611619}
+  - {fileID: 1107605485}
