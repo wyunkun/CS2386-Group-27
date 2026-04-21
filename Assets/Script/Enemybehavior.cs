@@ -32,11 +32,15 @@ public class EnemyBehavior : MonoBehaviour
         else
             Debug.LogWarning("Enemy: No GameObject with tag 'Player' found!");
 
-        audioSource = GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
         animator = GetComponentInChildren<Animator>();
 
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true; 
+        if (rb != null)
+            rb.freezeRotation = true;
     }
 
     void FixedUpdate()
@@ -57,20 +61,22 @@ public class EnemyBehavior : MonoBehaviour
         }
 
         if (canMove)
-        {
-            Vector3 direction = (player.position - transform.position);
-            direction.y = 0f;
-            direction.Normalize();
-
-            Vector3 newPos = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(newPos);
-
-            if (direction != Vector3.zero)
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 10f * Time.fixedDeltaTime);
-        }
+            MoveTowardsPlayer();
 
         if (inRange && distance <= minDistance && attackTimer <= 0f && !isAttacking)
             Attack();
+    }
+
+    void MoveTowardsPlayer()
+    {
+        Vector3 direction = (player.position - transform.position);
+        direction.y = 0f;
+        direction.Normalize();
+
+        rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+
+        if (direction != Vector3.zero)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 10f * Time.fixedDeltaTime);
     }
 
     void Attack()

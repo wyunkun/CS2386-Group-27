@@ -17,7 +17,7 @@ public class Lava : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
 
         audioSource.spatialBlend = 0f;
-        audioSource.volume = 15f;
+        audioSource.volume = 1f;
 
         if (ambientSFX != null)
         {
@@ -33,12 +33,12 @@ public class Lava : MonoBehaviour
             damageTimer -= Time.deltaTime;
     }
 
-    void OnCollisionStay(Collision other)
+    void OnCollisionStay(Collision collision)
     {
-        if (!other.collider.CompareTag("Player")) return;
+        if (!collision.collider.CompareTag("Player")) return;
         if (damageTimer > 0f) return;
 
-        PlayerHealth playerHealth = other.collider.GetComponent<PlayerHealth>();
+        PlayerHealth playerHealth = collision.collider.GetComponent<PlayerHealth>();
         if (playerHealth == null) return;
 
         playerHealth.TakeDamage(damageToPlayer);
@@ -48,17 +48,17 @@ public class Lava : MonoBehaviour
             audioSource.PlayOneShot(burnSFX);
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (!other.collider.CompareTag("enemy")) return;
+        if (!collision.collider.CompareTag("enemy")) return;
 
-        DestoryRobot dr = other.collider.GetComponent<DestoryRobot>();
+        DestoryRobot dr = collision.collider.GetComponent<DestoryRobot>();
         if (dr != null && dr.explosionEffect != null)
         {
-            GameObject explosion = Instantiate(dr.explosionEffect, other.transform.position, Quaternion.identity);
+            GameObject explosion = Instantiate(dr.explosionEffect, collision.transform.position, Quaternion.identity);
             Destroy(explosion, 2f);
         }
 
-        Destroy(other.gameObject);
+        Destroy(collision.gameObject);
     }
 }

@@ -20,17 +20,15 @@ public class PlayerController : MonoBehaviour
     public float groundRayLength = 0.02f;
     public float groundNormalMinY = 0.05f;
 
-    // runtime
-    private Vector2 moveInput;     // x=Horizontal, y=Vertical
+    private Vector2 moveInput;
     private bool runHeld;
-    public bool jumpStatus;
-    public bool isGrounded;
+    private bool jumpPressed;
+    private bool isGrounded;
     private float pitch;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -44,7 +42,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         GroundCheck();
-        Move(); 
+        Move();
     }
 
     void ReadInput()
@@ -54,53 +52,49 @@ public class PlayerController : MonoBehaviour
         runHeld = Input.GetKey(KeyCode.LeftShift);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            jumpStatus = true;
+            jumpPressed = true;
     }
 
     void Move()
     {
         float speed = runHeld ? runSpeed : walkSpeed;
 
-        Vector3 input = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
-        Vector3 world = transform.TransformDirection(input);
+        Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+        Vector3 worldDirection = transform.TransformDirection(direction);
 
-        float y = rb.linearVelocity.y;
+        float verticalVelocity = rb.linearVelocity.y;
 
-        if (jumpStatus && isGrounded)
+        if (jumpPressed && isGrounded)
         {
-            y = jumpSpeed;
-            isGrounded = false; 
+            verticalVelocity = jumpSpeed;
+            isGrounded = false;
         }
-        jumpStatus = false;
+        jumpPressed = false;
 
-        rb.linearVelocity = new Vector3(world.x * speed, y, world.z * speed);
+        rb.linearVelocity = new Vector3(worldDirection.x * speed, verticalVelocity, worldDirection.z * speed);
     }
 
     void GroundCheck()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundRayLength))
-        {
             isGrounded = hit.normal.y > groundNormalMinY;
-        }
         else
-        {
             isGrounded = false;
-        }
     }
 
     void Look()
     {
         float sensitivity = PlayerPrefs.GetFloat("Sensitivity", mouseSensitivity);
-        float mx = Input.GetAxis("Mouse X") * sensitivity;
-        float my = Input.GetAxis("Mouse Y") * sensitivity;
 
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-        transform.Rotate(Vector3.up * mx);
+        transform.Rotate(Vector3.up * mouseX);
 
-        pitch -= my;
+        pitch -= mouseY;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        if (head)
+        if (head != null)
             head.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 }
